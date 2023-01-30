@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './card-table.component.html',
 })
 export class CardTableComponent implements OnInit {
+  visibleDetail = false;
   @Input()
   get color(): string {
     return this._color;
@@ -13,8 +14,11 @@ export class CardTableComponent implements OnInit {
     this._color = color !== 'light' && color !== 'dark' ? 'light' : color;
   }
   private _color = 'light';
-
   constructor() {}
 
   ngOnInit(): void {}
+
+  checkDetailProduct(){
+    this.visibleDetail = true;
+  }
 }
