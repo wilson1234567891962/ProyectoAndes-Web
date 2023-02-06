@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "lint": "ng lint",
-    "build": "ng build",
+    "build": "ng build --prod",
     "start": "ng serve",
     "test": "ng test",
     "e2e": "ng e2e",
