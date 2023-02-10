@@ -14,7 +14,135 @@ export class CardTableComponent implements OnInit {
       supplier: 'Coca Cola',
       importer: 'N/A',
       amount: 10
-  }]
+  },
+  {
+    product: 'Coca Cola',
+    imageProduct: 'assets/img/bootstrap.jpg',
+    store: 'Andino',
+    supplier: 'Coca Cola',
+    importer: 'N/A',
+    amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+},
+{
+  product: 'Coca Cola',
+  imageProduct: 'assets/img/bootstrap.jpg',
+  store: 'Andino',
+  supplier: 'Coca Cola',
+  importer: 'N/A',
+  amount: 10
+}]
 
   @Input()
   get color(): string {
