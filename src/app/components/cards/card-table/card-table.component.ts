@@ -6,6 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardTableComponent implements OnInit {
   visibleDetail = false;
+  product = [
+    {
+      product: 'Coca Cola',
+      imageProduct: 'assets/img/bootstrap.jpg',
+      store: 'Andino',
+      supplier: 'Coca Cola',
+      importer: 'N/A',
+      amount: 10
+  }]
+
   @Input()
   get color(): string {
     return this._color;
