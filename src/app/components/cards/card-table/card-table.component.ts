@@ -9,7 +9,8 @@ export class CardTableComponent implements OnInit {
   selectionIndex = 1;
   productsTmp = [
   ]
-
+  productSearch = [
+  ]
   product = [
     {
       product: 'Coca Cola A1',
@@ -17,7 +18,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A2',
@@ -25,7 +31,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A3',
@@ -33,7 +44,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A4',
@@ -41,7 +57,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A5',
@@ -49,7 +70,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A6',
@@ -57,7 +83,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A7',
@@ -65,7 +96,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A8',
@@ -73,7 +109,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A9',
@@ -81,7 +122,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A10',
@@ -89,7 +135,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A11',
@@ -97,7 +148,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A12',
@@ -105,7 +161,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A13',
@@ -113,7 +174,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+         category: 'PERECEDERO',
+         expiration: '12-04-2022T12:00:00',
+         locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A14',
@@ -121,7 +187,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A15',
@@ -129,7 +200,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A16',
@@ -137,7 +213,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     },
     {
       product: 'Coca Cola A17',
@@ -145,7 +226,12 @@ export class CardTableComponent implements OnInit {
       store: 'Andino',
       supplier: 'Coca Cola',
       importer: 'N/A',
-      amount: 10
+      amount: 10,
+      detail: {
+        category: 'PERECEDERO',
+        expiration: '12-04-2022T12:00:00',
+        locate: 'CENTRO COMERCIAL ANDINO'
+      }
     }
     ]
 
@@ -164,21 +250,36 @@ export class CardTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.goItemPagination(1);
+    this.goItemPagination(1, this.product);
   }
 
-  goItemPagination(count){
-    console.log(count);
-    const paginate = this.paginate(this.product.length, count, 5, 5);
-    console.log(paginate);
+  goItemPagination(count, data){
+    data = this.productSearch.length >= 1 ? this.productSearch : this.product;
+    const paginate = this.paginate(data.length, count, 5, 5);
     if(count < 1 || count > paginate.totalPages ){
       return;
     }
     this.selectionIndex = count;
     this.productsTmp = new Array();
     for (let i = paginate.startIndex; i <= paginate.endIndex; i++) {
-      this.productsTmp.push(this.product[i]);
+      this.productsTmp.push(data[i]);
     }
+  }
+
+  onChangeEvent(event: any){
+    const text = event.target.value.toString().toLowerCase();
+    if(text.length < 0 ){
+      this.productSearch = [];
+      this.goItemPagination(this.selectionIndex, this.product);
+      return;
+    }
+    const result = this.product.filter(it =>
+      it.detail.category.toString().toLowerCase().includes( text)||
+      it.importer.toString().toLowerCase().includes( text) ||
+      it.product.toString().toLowerCase().includes( text));
+    this.productSearch = result;
+    this.selectionIndex = 1;
+    this.goItemPagination(this.selectionIndex, result);
   }
 
   checkDetailProduct() {
