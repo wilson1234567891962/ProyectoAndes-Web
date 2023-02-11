@@ -5,12 +5,11 @@ import {Component, OnInit, Input} from '@angular/core';
   templateUrl: './card-table.component.html',
 })
 export class CardTableComponent implements OnInit {
+  searchIsVisible = false;
   visibleDetail = false;
   selectionIndex = 1;
-  productsTmp = [
-  ]
-  productSearch = [
-  ]
+  productsTmp = []
+  productSearch = [];
   product = [
     {
       product: 'Coca Cola A1',
@@ -39,7 +38,7 @@ export class CardTableComponent implements OnInit {
       }
     },
     {
-      product: 'Coca Cola A3',
+      product: 'Malta A3',
       imageProduct: 'assets/img/bootstrap.jpg',
       store: 'Andino',
       supplier: 'Coca Cola',
@@ -52,7 +51,7 @@ export class CardTableComponent implements OnInit {
       }
     },
     {
-      product: 'Coca Cola A4',
+      product: 'Malta A4',
       imageProduct: 'assets/img/bootstrap.jpg',
       store: 'Andino',
       supplier: 'Coca Cola',
@@ -254,7 +253,8 @@ export class CardTableComponent implements OnInit {
   }
 
   goItemPagination(count, data){
-    data = this.productSearch.length >= 1 ? this.productSearch : this.product;
+    this.visibleDetail = false;
+    data = !this.searchIsVisible ? this.product : this.productSearch;
     const paginate = this.paginate(data.length, count, 5, 5);
     if(count < 1 || count > paginate.totalPages ){
       return;
@@ -269,15 +269,18 @@ export class CardTableComponent implements OnInit {
   onChangeEvent(event: any){
     const text = event.target.value.toString().toLowerCase();
     if(text.length < 0 ){
+      this.searchIsVisible = false;
       this.productSearch = [];
       this.goItemPagination(this.selectionIndex, this.product);
       return;
     }
+    this.searchIsVisible = true;
     const result = this.product.filter(it =>
-      it.detail.category.toString().toLowerCase().includes( text)||
-      it.importer.toString().toLowerCase().includes( text) ||
-      it.product.toString().toLowerCase().includes( text));
-    this.productSearch = result;
+      it.importer.toString().toLowerCase().includes(text)||
+      it.store.toString().toLowerCase().includes(text) ||
+      it.product.toString().toLowerCase().includes(text));
+    this.productSearch = result.length <= 0 ? undefined: result;
+    this.productsTmp = new Array();
     this.selectionIndex = 1;
     this.goItemPagination(this.selectionIndex, result);
   }
