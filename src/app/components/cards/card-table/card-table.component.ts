@@ -279,7 +279,7 @@ export class CardTableComponent implements OnInit {
       it.importer.toString().toLowerCase().includes(text)||
       it.store.toString().toLowerCase().includes(text) ||
       it.product.toString().toLowerCase().includes(text));
-    this.productSearch = result.length <= 0 ? undefined: result;
+    this.productSearch = result;
     this.productsTmp = new Array();
     this.selectionIndex = 1;
     this.goItemPagination(this.selectionIndex, result);
