@@ -8,7 +8,8 @@ export class CardTableComponent implements OnInit {
   searchIsVisible = false;
   visibleDetail = false;
   selectionIndex = 1;
-  productsTmp = []
+  productsTmp = [];
+  detailProduct = {};
   productSearch = [];
   product = [
     {
@@ -21,7 +22,7 @@ export class CardTableComponent implements OnInit {
       detail: {
         category: 'PERECEDERO',
         expiration: '12-04-2022T12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
+        locate: 'CENTRO COMERCIAL TESTA'
       }
     },
     {
@@ -47,7 +48,7 @@ export class CardTableComponent implements OnInit {
       detail: {
         category: 'PERECEDERO',
         expiration: '12-04-2022T12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
+        locate: 'CENTRO COMERCIZ'
       }
     },
     {
@@ -232,7 +233,7 @@ export class CardTableComponent implements OnInit {
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     }
-    ]
+    ];
 
   @Input()
   get color(): string {
@@ -285,8 +286,9 @@ export class CardTableComponent implements OnInit {
     this.goItemPagination(this.selectionIndex, result);
   }
 
-  checkDetailProduct() {
+  checkDetailProduct(index) {
     this.visibleDetail = true;
+    this.detailProduct = !this.searchIsVisible ? this.product[index].detail : this.productSearch[index].detail;
   }
 
   paginate(

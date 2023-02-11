@@ -89,7 +89,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr (click)="checkDetailProduct()" *ngFor="let item of productsTmp; index as i;">
+      <tr (click)="checkDetailProduct(i)" *ngFor="let item of productsTmp; index as i;">
         <th
           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
         >
@@ -231,17 +231,17 @@
           <td
             class="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
-            PERECEDERO
+            {{detailProduct.category}}
           </td>
           <td
             class="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
-            12-04-2022T12:00:00
+            {{detailProduct.expiration}}
           </td>
           <td
             class="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
-            CENTRO COMERCIAL ANDINO
+            {{detailProduct.locate}}
           </td>
         </tr>
         </tbody>
