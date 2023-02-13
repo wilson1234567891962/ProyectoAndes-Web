@@ -5,12 +5,16 @@ import {Component, OnInit, Input} from '@angular/core';
   templateUrl: './card-table.component.html',
 })
 export class CardTableComponent implements OnInit {
+  category = '';
+  store = '';
   searchIsVisible = false;
   visibleDetail = false;
   selectionIndex = 1;
   productsTmp = [];
   detailProduct : any = {};
   productSearch = [];
+  categoryList = [];
+  storeList = [];
   product = [
     {
       product: 'Coca Cola A1',
@@ -223,7 +227,7 @@ export class CardTableComponent implements OnInit {
     {
       product: 'Coca Cola A17',
       imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
+      store: 'Pepe Sierra',
       supplier: 'Coca Cola',
       importer: 'N/A',
       amount: 10,
@@ -251,6 +255,24 @@ export class CardTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.goItemPagination(1, this.product);
+    this.getCategories();
+    this.getStore();
+  }
+
+  getCategories(): void {
+    for (const item of this.product) {
+      if(!this.categoryList.includes(item.detail.category)) {
+        this.categoryList.push(item.detail.category);
+      }
+    }
+  }
+
+  getStore(): void {
+    for (const item of this.product) {
+      if(!this.storeList.includes(item.store)) {
+        this.storeList.push(item.store);
+      }
+    }
   }
 
   goItemPagination(count, data){
@@ -352,4 +374,27 @@ export class CardTableComponent implements OnInit {
     };
   }
 
+  search()  {
+    if(this.store === ''  && this.category === '')  {
+      return;
+    }
+    const result = this.product.filter(it =>
+      it.store.toString().toLowerCase() ===  this.store.toLowerCase() ||
+      it.detail.category.toString().toLowerCase() === this.category.toLowerCase().trim()
+    );
+    console.log(result);
+    this.searchIsVisible = true;
+    this.productSearch = result;
+    this.productsTmp = new Array();
+    this.selectionIndex = 1;
+    this.goItemPagination(this.selectionIndex, result);
+  }
+
+  clean()  {
+    this.store = '';
+    this.category = '';
+    this.searchIsVisible = false;
+    this.productSearch = [];
+    this.goItemPagination(this.selectionIndex, this.product);
+  }
 }
