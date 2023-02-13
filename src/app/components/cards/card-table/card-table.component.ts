@@ -9,7 +9,7 @@ export class CardTableComponent implements OnInit {
   visibleDetail = false;
   selectionIndex = 1;
   productsTmp = [];
-  detailProduct = {};
+  detailProduct : any = {};
   productSearch = [];
   product = [
     {
