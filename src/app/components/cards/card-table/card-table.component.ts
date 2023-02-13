@@ -232,7 +232,7 @@ export class CardTableComponent implements OnInit {
       importer: 'N/A',
       amount: 10,
       detail: {
-        category: 'PERECEDERO',
+        category: 'VITALICIO',
         expiration: '12-04-2022T12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
@@ -291,6 +291,8 @@ export class CardTableComponent implements OnInit {
 
   onChangeEvent(event: any){
     const text = event.target.value.toString().toLowerCase();
+    this.store = '';
+    this.category = '';
     if(text.length < 0 ){
       this.searchIsVisible = false;
       this.productSearch = [];
