@@ -25,11 +25,13 @@
       <option [value]="item" *ngFor="let item of storeList" >{{item}}</option>
     </select>
     <div>
-      <button type="button" class="buttonSearch m-3 ml-3" (click)="search()">Buscar</button>
-      <button type="button" class="buttonSearch m-3" (click)="clean()">Limpiar</button>
+      <button type="button" class="buttonSearch colorRed m-3 ml-3 " (click)="search()">Buscar</button>
+      <button type="button" class="buttonSearch colorGrey m-3" (click)="clean()">Limpiar</button>
     </div>
   </div>
 </div>
+
+
 
 <div
   class="relative flex flex-col min-w-0 break-words shadow-lg rounded mt-3"
