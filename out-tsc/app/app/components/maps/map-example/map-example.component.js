@@ -62,7 +62,7 @@ let MapExampleComponent = class MapExampleComponent {
             animation: google.maps.Animation.DROP,
             title: "Hello World!",
         });
-        const contentString = '<div class="info-window-content"><h2>Notus Angular</h2>' +
+        const contentString = '<div class="info-window-content"><h2>CPPM</h2>' +
             "<p>A beautiful UI Kit and Admin for Tailwind CSS. It is Free and Open Source.</p></div>";
         const infowindow = new google.maps.InfoWindow({
             content: contentString,
