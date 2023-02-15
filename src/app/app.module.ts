@@ -49,6 +49,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserDropdownComponent } from './components/dropdowns/user-dropdown/user-dropdown.component';
 import {FormsModule} from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
+import {CommunicatorService} from './services/communicator.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -88,8 +90,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ProfileComponent,
     LoadingComponent,
   ],
-    imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+    imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [CommunicatorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
