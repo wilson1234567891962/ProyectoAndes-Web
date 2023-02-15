@@ -24,9 +24,17 @@ export class LoginService {
     return this.communicatorService.http_post(environment.URL_PRODUCTION + 'login/', body);
   }
 
-  forgetPassword(): Observable<any>  {
+  register(email, password): Observable<any>  {
     const body: any = {
-      email: this.user
+      email,
+      password
+    };
+    return this.communicatorService.http_post(environment.URL_PRODUCTION + 'register/', body);
+  }
+
+  forgetPassword(email): Observable<any>  {
+    const body: any = {
+      email
     };
     return this.communicatorService.http_post(environment.URL_PRODUCTION + 'forgetPassword/', body);
   }

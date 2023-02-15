@@ -5,6 +5,9 @@
         class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
       >
         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <div class="rounded-t mb-0 px-6 py-6">
+            <hr class="mt-6 border-b-1 border-blueGray-300" />
+          </div>
           <div class="text-blueGray-400 text-center mb-3 font-bold">
             <small>CPPM</small>
           </div>
@@ -69,12 +72,12 @@
       </div>
       <div class="flex flex-wrap mt-6 relative">
         <div class="w-1/2">
-          <a href="javascript:void(0)" class="text-blueGray-200">
+          <a [routerLink]="['/auth/register']"  [queryParams]="{id:'forget'}" class="text-blueGray-200">
             <small>Olvido la contraseña?</small>
           </a>
         </div>
         <div class="w-1/2 text-right">
-          <a [routerLink]="['/auth/register']" class="text-blueGray-200">
+          <a [routerLink]="['/auth/register']"  [queryParams]="{id:'register'}" class="text-blueGray-200">
             <small>Crear una cuenta</small>
           </a>
         </div>
