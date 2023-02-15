@@ -8,21 +8,21 @@ import {UtilitiesService} from '../../../services/utilities.service';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  private email = '';
-  private password = '';
-  private hideOptionsRegister = false;
+  private _email = '';
+  private _password = '';
+  private _hideOptionsRegister = false;
   constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService:UtilitiesService) {}
 
   ngOnInit(): void {
     this.checkParameters();
   }
   validationInfo(){
-    return !this.utilitiesService.validatorsFields(this.email) || !this.utilitiesService.validatorsFields(this.password);
+    return !this.utilitiesService.validatorsFields(this._email) || !this.utilitiesService.validatorsFields(this._password);
   }  checkParameters() {
     this.route.queryParams.subscribe(
       params => {
         if(params.id === 'forget'){
-           this.hideOptionsRegister = true;
+           this._hideOptionsRegister = true;
         }
       }
     )
@@ -31,11 +31,11 @@ export class RegisterComponent implements OnInit {
     history.back();
   }
   validationEmail(){
-    return this.email.length ===0;
+    return this._email.length ===0;
   }
 
   register(){
-    this.loginService.register(this.email, this.password).subscribe(result => {
+    this.loginService.register(this._email, this._password).subscribe(result => {
        console.log(result);
     }, error => {
        console.log(error);
@@ -43,10 +43,35 @@ export class RegisterComponent implements OnInit {
   }
 
   forgetPassword(){
-    this.loginService.forgetPassword(this.email).subscribe(result => {
+    this.loginService.forgetPassword(this._email).subscribe(result => {
       console.log(result);
     }, error => {
       console.log(error);
     })
+  }
+
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get password(): string {
+    return this._password;
+  }
+
+  set password(value: string) {
+    this._password = value;
+  }
+
+  get hideOptionsRegister(): boolean {
+    return this._hideOptionsRegister;
+  }
+
+  set hideOptionsRegister(value: boolean) {
+    this._hideOptionsRegister = value;
   }
 }
