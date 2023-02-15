@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ActivatedRoute} from '@angular/router';
 import {UtilitiesService} from '../../../services/utilities.service';
@@ -11,38 +11,46 @@ export class RegisterComponent implements OnInit {
   private _email = '';
   private _password = '';
   private _hideOptionsRegister = false;
-  constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService:UtilitiesService) {}
+  private valor = '';
+
+  constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService: UtilitiesService) {
+  }
 
   ngOnInit(): void {
     this.checkParameters();
   }
-  validationInfo(){
-    return !this.utilitiesService.validatorsFields(this._email) || !this.utilitiesService.validatorsFields(this._password);
-  }  checkParameters() {
+
+  validationInfo() {
+    return !this.utilitiesService.validatorsFields(this._email) || !this.utilitiesService.validatorsFields(this._password)|| !this.utilitiesService.validatorsEmail(this._email);
+  }
+
+  checkParameters() {
     this.route.queryParams.subscribe(
       params => {
-        if(params.id === 'forget'){
-           this._hideOptionsRegister = true;
+        if (params.id === 'forget') {
+          this._hideOptionsRegister = true;
         }
       }
     )
   }
+
   goBack() {
     history.back();
   }
-  validationEmail(){
-    return this._email.length ===0;
+
+  validationEmail() {
+    return !this.utilitiesService.validatorsFields(this._email) || !this.utilitiesService.validatorsEmail(this._email);
   }
 
-  register(){
+  register() {
     this.loginService.register(this._email, this._password).subscribe(result => {
-       console.log(result);
+      console.log(result);
     }, error => {
-       console.log(error);
+      console.log(error);
     })
   }
 
-  forgetPassword(){
+  forgetPassword() {
     this.loginService.forgetPassword(this._email).subscribe(result => {
       console.log(result);
     }, error => {
