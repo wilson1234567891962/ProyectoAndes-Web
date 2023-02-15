@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {Router} from '@angular/router';
+import {UtilitiesService} from '../../../services/utilities.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
+  constructor(private loginService: LoginService, private router: Router, private utilitiesService:UtilitiesService) {}
   private email = '';
   private password = '';
   private isChecked = false;
-  constructor(private loginService: LoginService, private router: Router) {}
+  private disable=false;
 
   ngOnInit(): void {
     this.checkIsSaveUser();
@@ -23,7 +26,9 @@ export class LoginComponent implements OnInit {
        this.isChecked = true;
     }
   }
-
+  checkInfo(){
+    return !this.utilitiesService.validatorsFields(this.email) || !this.utilitiesService.validatorsFields(this.password);
+  }
   saveUser() {
     if(!this.isChecked)  {
       this.isChecked = true;

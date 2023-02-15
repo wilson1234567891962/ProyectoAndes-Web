@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ActivatedRoute} from '@angular/router';
+import {UtilitiesService} from '../../../services/utilities.service';
 
 @Component({
   selector: 'app-register',
@@ -10,13 +11,14 @@ export class RegisterComponent implements OnInit {
   private email = '';
   private password = '';
   private hideOptionsRegister = false;
-  constructor(private loginService: LoginService, private route: ActivatedRoute) {}
+  constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService:UtilitiesService) {}
 
   ngOnInit(): void {
     this.checkParameters();
   }
-
-  checkParameters() {
+  validationInfo(){
+    return !this.utilitiesService.validatorsFields(this.email) || !this.utilitiesService.validatorsFields(this.password);
+  }  checkParameters() {
     this.route.queryParams.subscribe(
       params => {
         if(params.id === 'forget'){
@@ -27,6 +29,9 @@ export class RegisterComponent implements OnInit {
   }
   goBack() {
     history.back();
+  }
+  validationEmail(){
+    return this.email.length ===0;
   }
 
   register(){
