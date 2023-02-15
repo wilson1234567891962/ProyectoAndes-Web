@@ -10,10 +10,10 @@ import {UtilitiesService} from '../../../services/utilities.service';
 })
 export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router, private utilitiesService:UtilitiesService) {}
-  private email = '';
-  private password = '';
-  private isChecked = false;
-  private disable=false;
+  private _email = '';
+  private _password = '';
+  private _isChecked = false;
+  private _disable=false;
 
   ngOnInit(): void {
     this.checkIsSaveUser();
@@ -22,28 +22,28 @@ export class LoginComponent implements OnInit {
   checkIsSaveUser() {
     const emailSaved = localStorage.getItem('USER_ACTIVE');
     if(emailSaved !== undefined && emailSaved !== 'null' && emailSaved !== ''){
-       this.email = emailSaved;
-       this.isChecked = true;
+       this._email = emailSaved;
+       this._isChecked = true;
     }
   }
   checkInfo(){
-    return !this.utilitiesService.validatorsFields(this.email) || !this.utilitiesService.validatorsFields(this.password);
+    return !this.utilitiesService.validatorsFields(this._email) || !this.utilitiesService.validatorsFields(this._password);
   }
   saveUser() {
-    if(!this.isChecked)  {
-      this.isChecked = true;
-      localStorage.setItem('USER_ACTIVE', this.email);
+    if(!this._isChecked)  {
+      this._isChecked = true;
+      localStorage.setItem('USER_ACTIVE', this._email);
     } else   {
-      this.isChecked = false;
+      this._isChecked = false;
       localStorage.setItem('USER_ACTIVE', '');
     }
   }
 
   login(){
-    this.loginService.user = this.email;
-    this.loginService.password = this.password;
-    if(this.isChecked)  {
-      localStorage.setItem('USER_ACTIVE', this.email);
+    this.loginService.user = this._email;
+    this.loginService.password = this._password;
+    if(this._isChecked)  {
+      localStorage.setItem('USER_ACTIVE', this._email);
     }
     this.loginService.login().subscribe(result => {
       this.loginService.tokenSecret = result.data.token;
@@ -52,5 +52,38 @@ export class LoginComponent implements OnInit {
     }, error => {
 
     })
+  }
+
+
+  get password(): string {
+    return this._password;
+  }
+
+  set password(value: string) {
+    this._password = value;
+  }
+
+  get isChecked(): boolean {
+    return this._isChecked;
+  }
+
+  set isChecked(value: boolean) {
+    this._isChecked = value;
+  }
+
+  get disable(): boolean {
+    return this._disable;
+  }
+
+  set disable(value: boolean) {
+    this._disable = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
   }
 }
