@@ -23,26 +23,39 @@ export class UtilitiesService {
       return true;
     }
   }
-  validatorDate(input){
-    let date:Date;
-    let date2:Date;
+
+  validatorDate(input: Date) {
+    let date: Date;
+    let date2: Date;
 
     date = new Date();
-    const dia = date.getDay();
-    const mes = date.getMonth();
-    const anio = date.getFullYear();
+    const day = date.getDay();
+    const month = date.getMonth();
+    const year = date.getFullYear();
     date2 = new Date();
-    const agregar_dias = 3;
+    // tslint:disable-next-line:variable-name
+    const add_days = 3;
 
-    date2.setDate(date.getDate() + agregar_dias);
-    const dia1 = date2.getDay();
-    const mes1 = date2.getMonth();
-    const anio1 = date2.getFullYear();
-    if (date2>input){
+    date2.setDate(date.getDate() + add_days);
+    const day1 = date.getDay();
+    const month1 = date.getMonth();
+    const year1 = date.getFullYear();
+    if (date2 > input) {
       return false;
-    }
-    else {
+    } else {
       return true;
     }
+  }
+
+  conversionDate(inputDataPicker: Date, validationDate: string) {
+    const date = new Date(validationDate);
+    const day = date.getDay();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    inputDataPicker.setDate(inputDataPicker.getDate() + 1);
+    console.log('nuevo')
+    console.log(validationDate)
+    console.log(inputDataPicker)
+    return day === inputDataPicker.getDay() && month === inputDataPicker.getMonth() && year === inputDataPicker.getFullYear();
   }
 }

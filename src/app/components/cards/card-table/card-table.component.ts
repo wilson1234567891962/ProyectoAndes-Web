@@ -6,6 +6,8 @@ import {UtilitiesService} from '../../../services/utilities.service';
   templateUrl: './card-table.component.html',
 })
 export class CardTableComponent implements OnInit {
+  endDay='';
+  startDay='';
   category = '';
   store = '';
   searchIsVisible = false;
@@ -26,7 +28,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-20-2023-12:00:00',
+        expiration: '03-25-2023',
         locate: 'CENTRO COMERCIAL TESTA'
       }
     },
@@ -39,7 +41,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-17-2023-12:00:00',
+        expiration: '01-10-2023',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -377,12 +379,16 @@ export class CardTableComponent implements OnInit {
   }
 
   search()  {
-    if(this.store === ''  && this.category === '')  {
+    if(this.store === ''  && this.category === '' && this.startDay === '' && this.endDay === '')  {
       return;
     }
     const result = this.product.filter(it =>
       it.store.toString().toLowerCase() ===  this.store.toLowerCase() ||
       it.detail.category.toString().toLowerCase() === this.category.toLowerCase().trim()
+      || (this.startDay.length>0 && this.endDay.length === 0 &&
+        this.utilitiesService.conversionDate(new Date(this.startDay),it.detail.expiration))
+      ||(this.endDay.length>0 && this.startDay.length === 0 &&
+        this.utilitiesService.conversionDate(new Date(this.endDay),it.detail.expiration))
     );
     console.log(result);
     this.searchIsVisible = true;

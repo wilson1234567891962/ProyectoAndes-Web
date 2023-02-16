@@ -24,12 +24,15 @@
     <select id="default" class="selectWinery minimal" [(ngModel)]="store" >
       <option [value]="item" *ngFor="let item of storeList" >{{item}}</option>
     </select>
+    <label class="block mb-2 mt-2 font-medium text-gray-900 dark:text-white ml-3 text-lg font-semibold">Fecha de inicio</label>
+    <input [(ngModel)]="startDay" [ngModelOptions]="{standalone: true}" type="date"/>
+    <label class="block mb-2 mt-2 font-medium text-gray-900 dark:text-white ml-3 text-lg font-semibold">Fecha de fin</label>
+    <input [(ngModel)]="endDay" [ngModelOptions]="{standalone: true}" type="date"/>
     <div>
       <button type="button" class="buttonSearch colorRed m-3 ml-3 " (click)="search()">Buscar</button>
       <button type="button" class="buttonSearch colorGrey m-3" (click)="clean()">Limpiar</button>
     </div>
   </div>
-  <input type="date" value="2017-06-01" />
 </div>
 
 
