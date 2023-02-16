@@ -29,6 +29,7 @@
       <button type="button" class="buttonSearch colorGrey m-3" (click)="clean()">Limpiar</button>
     </div>
   </div>
+  <input type="date" value="2017-06-01" />
 </div>
 
 
@@ -294,7 +295,6 @@
         </thead>
         <tbody>
         <tr
-          [disabled]=" expedicionValidation(detailProduct.expiration)"
           [ngClass]="
           expedicionValidation(detailProduct.expiration)
           ?'text-red-600 border-red-700'
