@@ -78,7 +78,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-19-2023-12:00:00',
+        expiration: '02-14-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
