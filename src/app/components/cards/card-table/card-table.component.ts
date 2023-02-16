@@ -25,7 +25,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL TESTA'
       }
     },
@@ -38,7 +38,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -51,7 +51,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIZ'
       }
     },
@@ -64,7 +64,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -77,7 +77,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -90,7 +90,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -103,7 +103,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -116,7 +116,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -129,7 +129,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -142,7 +142,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -155,7 +155,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -168,7 +168,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -181,7 +181,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
          category: 'PERECEDERO',
-         expiration: '12-04-2022T12:00:00',
+         expiration: '02-16-2023-12:00:00',
          locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -194,7 +194,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -207,7 +207,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -220,7 +220,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -233,7 +233,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'VITALICIO',
-        expiration: '12-04-2022T12:00:00',
+        expiration: '02-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     }
@@ -247,7 +247,6 @@ export class CardTableComponent implements OnInit {
   set color(color: string) {
     this._color = color !== 'light' && color !== 'dark' ? 'light' : color;
   }
-
   private _color = 'light';
 
   constructor() {
@@ -398,5 +397,9 @@ export class CardTableComponent implements OnInit {
     this.searchIsVisible = false;
     this.productSearch = [];
     this.goItemPagination(this.selectionIndex, this.product);
+  }
+
+  convertDate(value){
+    return new Date(value);
   }
 }
