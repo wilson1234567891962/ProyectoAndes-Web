@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {UtilitiesService} from '../../../services/utilities.service';
 
 @Component({
   selector: 'app-card-table',
@@ -25,7 +26,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
+        expiration: '02-20-2023-12:00:00',
         locate: 'CENTRO COMERCIAL TESTA'
       }
     },
@@ -38,7 +39,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
+        expiration: '02-17-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -64,7 +65,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
+        expiration: '02-18-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -77,7 +78,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
+        expiration: '02-19-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -116,7 +117,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
+        expiration: '03-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -207,7 +208,7 @@ export class CardTableComponent implements OnInit {
       amount: 10,
       detail: {
         category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
+        expiration: '03-16-2023-12:00:00',
         locate: 'CENTRO COMERCIAL ANDINO'
       }
     },
@@ -249,7 +250,7 @@ export class CardTableComponent implements OnInit {
   }
   private _color = 'light';
 
-  constructor() {
+  constructor(private utilitiesService:UtilitiesService) {
   }
 
   ngOnInit(): void {
@@ -401,5 +402,8 @@ export class CardTableComponent implements OnInit {
 
   convertDate(value){
     return new Date(value);
+  }
+  expedicionValidation(value){
+    return !this.utilitiesService.validatorDate(this.convertDate(value))
   }
 }

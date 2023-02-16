@@ -293,7 +293,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr
+          [disabled]=" expedicionValidation(detailProduct.expiration)"
+          [ngClass]="
+          expedicionValidation(detailProduct.expiration)
+          ?'text-red-600 border-red-700'
+          :'bg-blueGray-50 text-blueGray-500 border-blueGray-100'">
+
           <td
             class="border-t-0 px-3 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
