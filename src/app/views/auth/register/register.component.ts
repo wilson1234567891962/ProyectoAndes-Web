@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UtilitiesService} from '../../../services/utilities.service';
 
 @Component({
@@ -11,9 +11,9 @@ export class RegisterComponent implements OnInit {
   private _email = '';
   private _password = '';
   private _hideOptionsRegister = false;
-  private valor = '';
 
-  constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService: UtilitiesService) {
+  constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService: UtilitiesService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
   }
 
   validationInfo() {
-    return !this.utilitiesService.validatorsFields(this._email) || !this.utilitiesService.validatorsFields(this._password)|| !this.utilitiesService.validatorsEmail(this._email);
+    return !this.utilitiesService.validatorsFields(this._email) ||
+      !this.utilitiesService.validatorsFields(this._password)|| !this.utilitiesService.validatorsEmail(this._email);
   }
 
   checkParameters() {
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   goBack() {
-    history.back();
+    this.router.navigate(['auth/login']);
   }
 
   validationEmail() {

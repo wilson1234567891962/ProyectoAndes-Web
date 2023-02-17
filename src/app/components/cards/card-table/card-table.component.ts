@@ -1,11 +1,13 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {UtilitiesService} from '../../../services/utilities.service';
+import {StoreService} from '../../../services/store.service';
+import {LoginService} from '../../../services/login.service';
 
 @Component({
   selector: 'app-card-table',
   templateUrl: './card-table.component.html',
 })
-export class CardTableComponent implements OnInit {
+export class CardTableComponent implements OnInit{
   endDay='';
   startDay='';
   category = '';
@@ -18,229 +20,7 @@ export class CardTableComponent implements OnInit {
   productSearch = [];
   categoryList = [];
   storeList = [];
-  product = [
-    {
-      product: 'Coca Cola A1',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '03-25-2023',
-        locate: 'CENTRO COMERCIAL TESTA'
-      }
-    },
-    {
-      product: 'Coca Cola A2',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '01-10-2023',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Malta A3',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIZ'
-      }
-    },
-    {
-      product: 'Malta A4',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-18-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A5',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-14-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A6',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A7',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A8',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '03-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A9',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A10',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A11',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A12',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A13',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-         category: 'PERECEDERO',
-         expiration: '02-16-2023-12:00:00',
-         locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A14',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A15',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '03-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A16',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Andino',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'PERECEDERO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    },
-    {
-      product: 'Coca Cola A17',
-      imageProduct: 'assets/img/bootstrap.jpg',
-      store: 'Pepe Sierra',
-      supplier: 'Coca Cola',
-      importer: 'N/A',
-      amount: 10,
-      detail: {
-        category: 'VITALICIO',
-        expiration: '02-16-2023-12:00:00',
-        locate: 'CENTRO COMERCIAL ANDINO'
-      }
-    }
-    ];
+  product = [];
 
   @Input()
   get color(): string {
@@ -252,12 +32,9 @@ export class CardTableComponent implements OnInit {
   }
   private _color = 'light';
 
-  constructor(private utilitiesService:UtilitiesService) {
-  }
+  constructor(private utilitiesService:UtilitiesService, private  storeService: StoreService, private  loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.goItemPagination(1, this.product);
-    this.getCategories();
     this.getStore();
   }
 
@@ -270,11 +47,27 @@ export class CardTableComponent implements OnInit {
   }
 
   getStore(): void {
+    if(this.storeService.product === undefined){
+      this.storeService.getStore(this.loginService.tokenSecret).subscribe(it => {
+        this.storeService.product = it.data;
+        this.product = it.data;
+        this.setProduct();
+      })
+
+    } else {
+      this.product = this.storeService.product;
+      this.setProduct();
+    }
+  }
+
+  setProduct() : void {
     for (const item of this.product) {
       if(!this.storeList.includes(item.store)) {
         this.storeList.push(item.store);
       }
     }
+    this.goItemPagination(1, this.product);
+    this.getCategories()
   }
 
   goItemPagination(count, data){
@@ -409,7 +202,8 @@ export class CardTableComponent implements OnInit {
   convertDate(value){
     return new Date(value);
   }
-  expedicionValidation(value){
+
+  checkExpiration(value){
     return !this.utilitiesService.validatorDate(this.convertDate(value))
   }
 }
