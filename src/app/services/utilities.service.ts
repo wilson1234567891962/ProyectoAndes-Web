@@ -21,41 +21,33 @@ export class UtilitiesService {
     }
   }
 
-  validatorDate(input: Date) {
-    let date: Date;
-    let date2: Date;
+  validatorDate(input: Date, count: number) {
+    const date = new Date();
 
-    date = new Date();
-    const day = date.getDay();
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    date2 = new Date();
-    // tslint:disable-next-line:variable-name
-    const add_days = 3;
+    const system = new Date();
+    system.setDate(date.getDate() + count);
 
-    date2.setDate(date.getDate() + add_days);
-    const day1 = date.getDay();
-    const month1 = date.getMonth();
-    const year1 = date.getFullYear();
-    if (date2 > input) {
+    if (system > input) {
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 
   conversionDate(inputDataPicker: Date, validationDate: string) {
-    const date = new Date(validationDate);
+    const date = new Date(this.changeFormatDate(validationDate));
     const day = date.getDay();
     const month = date.getMonth();
     const year = date.getFullYear();
     inputDataPicker.setDate(inputDataPicker.getDate() + 1);
-    console.log('nuevo')
-    console.log(validationDate)
-    console.log(inputDataPicker)
     return day === inputDataPicker.getDay() && month === inputDataPicker.getMonth() && year === inputDataPicker.getFullYear();
   }
 
+  changeFormatDate(value): string  {
+    const date = value;
+    const tmp = date.split('-');
+    const newDate = tmp[1] + '-' + tmp[0] + '-' + tmp[2];
+    return newDate;
+  }
 
   paginate(
     totalItems: number,

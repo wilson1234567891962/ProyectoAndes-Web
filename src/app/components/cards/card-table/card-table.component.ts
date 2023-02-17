@@ -117,7 +117,7 @@ export class CardTableComponent implements OnInit{
     const result = this.product.filter(it =>
       it.store.toString().toLowerCase() ===  this.store.toLowerCase() ||
       it.detail.category.toString().toLowerCase() === this.category.toLowerCase().trim()
-      || (this.startDay.length>0 && this.endDay.length === 0 &&
+      || (this.startDay.length > 0 && this.endDay.length === 0 &&
         this.utilitiesService.conversionDate(new Date(this.startDay),it.detail.expiration))
       ||(this.endDay.length>0 && this.startDay.length === 0 &&
         this.utilitiesService.conversionDate(new Date(this.endDay),it.detail.expiration))
@@ -133,16 +133,18 @@ export class CardTableComponent implements OnInit{
   clean()  {
     this.store = '';
     this.category = '';
+    this.startDay = '';
+    this.endDay = '';
     this.searchIsVisible = false;
     this.productSearch = [];
     this.goItemPagination(this.selectionIndex, this.product);
   }
 
   convertDate(value){
-    return new Date(value);
+    return new Date(this.utilitiesService.changeFormatDate(value));
   }
 
   checkExpiration(value){
-    return !this.utilitiesService.validatorDate(this.convertDate(value))
+    return !this.utilitiesService.validatorDate(this.convertDate(value), 3)
   }
 }
