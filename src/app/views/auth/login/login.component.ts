@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
       this.loginService.rol = result.data.rol;
       this.router.navigate(['admin/dashboard']);
     }, error => {
-      this.toastr.error(error.code +': ' +  error.message, 'Error', {
-        timeOut: 3000,
+      this.toastr.error(error.error.code +': ' +  error.error.message, 'Error', {
+        timeOut: 7000,
       });
     })
   }

@@ -40,7 +40,6 @@ export class CardTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStore();
-    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 
   getCategories(): void {
@@ -57,6 +56,10 @@ export class CardTableComponent implements OnInit {
         this.storeService.product = it.data;
         this.product = it.data;
         this.setProduct();
+      }, error => {
+        this.toastr.error(error.error.code +': ' +  error.error.message, 'Error', {
+          timeOut: 7000,
+        });
       })
 
     } else {

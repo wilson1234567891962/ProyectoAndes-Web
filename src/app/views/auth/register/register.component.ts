@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UtilitiesService} from '../../../services/utilities.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   private _hideOptionsRegister = false;
 
   constructor(private loginService: LoginService, private route: ActivatedRoute, private utilitiesService: UtilitiesService,
-              private router: Router) {
+              private router: Router,  private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -45,17 +46,25 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.loginService.register(this._email, this._password).subscribe(result => {
-      console.log(result);
+      this.toastr.success(result.data.code +': ' +  result.data.message, 'Info', {
+        timeOut: 7000,
+      });
     }, error => {
-      console.log(error);
+      this.toastr.error(error.error.code +': ' +  error.error.message, 'Error', {
+        timeOut: 7000,
+      });
     })
   }
 
   forgetPassword() {
     this.loginService.forgetPassword(this._email).subscribe(result => {
-      console.log(result);
+      this.toastr.success(result.code +': ' +  result.message, 'Info', {
+        timeOut: 7000,
+      });
     }, error => {
-      console.log(error);
+      this.toastr.error(error.error.code +': ' +  error.error.message, 'Error', {
+        timeOut: 7000,
+      });
     })
   }
 
