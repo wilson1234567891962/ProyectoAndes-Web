@@ -10,13 +10,15 @@ import {ToastrService} from 'ngx-toastr';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router, private utilitiesService:UtilitiesService, private toastr: ToastrService) {}
+  constructor(private loginService: LoginService, private router: Router, private utilitiesService:UtilitiesService,
+              private toastr: ToastrService) {}
   private _email = '';
   private _password = '';
   private _isChecked = false;
   private _disable=false;
 
   ngOnInit(): void {
+    this.loginService.tokenSecret = '';
     this.checkIsSaveUser();
   }
 

@@ -53,6 +53,7 @@ import {CommunicatorService} from './services/communicator.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TokenAuth} from './guard/token.auth';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     LoadingComponent,
   ],
     imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,  ToastrModule.forRoot(), BrowserAnimationsModule],
-  providers: [CommunicatorService],
+  providers: [CommunicatorService, TokenAuth],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

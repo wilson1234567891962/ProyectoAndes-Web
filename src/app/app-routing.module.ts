@@ -19,12 +19,14 @@ import { RegisterComponent } from './views/auth/register/register.component';
 import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import {TokenAuth} from './guard/token.auth';
 
 const routes: Routes = [
   // admin views
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [TokenAuth],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'settings', component: SettingsComponent },
@@ -44,10 +46,10 @@ const routes: Routes = [
     ],
   },
   // no layout views
-  { path: 'profile', component: ProfileComponent },
-  { path: 'landing', component: LandingComponent },
-  { path: '', component: AdminComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: 'profile', component: ProfileComponent,     canActivate: [TokenAuth], },
+  { path: 'landing', component: LandingComponent,     canActivate: [TokenAuth], },
+  { path: '', redirectTo: 'auth/login' },
+  { path: '**', redirectTo: '', pathMatch: 'full',     canActivate: [TokenAuth], },
 ];
 
 @NgModule({
