@@ -42,12 +42,20 @@ export class UtilitiesService {
     return day === inputDataPicker.getDay() && month === inputDataPicker.getMonth() && year === inputDataPicker.getFullYear();
   }
 
-  changeFormatDate(value): string  {
+  changeFormatDate(value): string {
     const date = value;
     const tmp = date.split('-');
     const newDate = tmp[1] + '-' + tmp[0] + '-' + tmp[2];
     return newDate;
   }
+
+  betweenDate(inputStartDataPicker: Date, inputEndDatePicker: Date, validationDate: string) {
+    const date = new Date(this.changeFormatDate(validationDate));
+    inputStartDataPicker.setDate(inputStartDataPicker.getDate() + 1);
+    inputEndDatePicker.setDate(inputEndDatePicker.getDate() + 1);
+    return inputStartDataPicker<=date && inputEndDatePicker>=date;
+  }
+
 
   paginate(
     totalItems: number,

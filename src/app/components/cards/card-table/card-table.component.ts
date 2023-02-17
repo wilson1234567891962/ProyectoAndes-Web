@@ -129,6 +129,8 @@ export class CardTableComponent implements OnInit {
         this.utilitiesService.conversionDate(new Date(this.startDay), it.detail.expiration))
       || (this.endDay.length > 0 && this.startDay.length === 0 &&
         this.utilitiesService.conversionDate(new Date(this.endDay), it.detail.expiration))
+      || (this.endDay.length > 0 && this.startDay.length > 0 &&
+        this.utilitiesService.betweenDate(new Date(this.startDay), new Date(this.endDay), it.detail.expiration))
     );
     this.searchIsVisible = true;
     this.productSearch = result;
