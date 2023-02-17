@@ -122,7 +122,6 @@ export class CardTableComponent implements OnInit{
       ||(this.endDay.length>0 && this.startDay.length === 0 &&
         this.utilitiesService.conversionDate(new Date(this.endDay),it.detail.expiration))
     );
-    console.log(result);
     this.searchIsVisible = true;
     this.productSearch = result;
     this.productsTmp = new Array();
