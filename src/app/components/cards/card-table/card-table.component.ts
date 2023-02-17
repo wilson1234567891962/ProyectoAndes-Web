@@ -2,21 +2,22 @@ import {Component, OnInit, Input} from '@angular/core';
 import {UtilitiesService} from '../../../services/utilities.service';
 import {StoreService} from '../../../services/store.service';
 import {LoginService} from '../../../services/login.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-card-table',
   templateUrl: './card-table.component.html',
 })
-export class CardTableComponent implements OnInit{
-  endDay='';
-  startDay='';
+export class CardTableComponent implements OnInit {
+  endDay = '';
+  startDay = '';
   category = '';
   store = '';
   searchIsVisible = false;
   visibleDetail = false;
   selectionIndex = 1;
   productsTmp = [];
-  detailProduct : any = {};
+  detailProduct: any = {};
   productSearch = [];
   categoryList = [];
   storeList = [];
@@ -30,24 +31,28 @@ export class CardTableComponent implements OnInit{
   set color(color: string) {
     this._color = color !== 'light' && color !== 'dark' ? 'light' : color;
   }
+
   private _color = 'light';
 
-  constructor(private utilitiesService:UtilitiesService, private  storeService: StoreService, private  loginService: LoginService) {}
+  constructor(private utilitiesService: UtilitiesService, private storeService: StoreService, private loginService: LoginService,
+              private toastr: ToastrService) {
+  }
 
   ngOnInit(): void {
     this.getStore();
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 
   getCategories(): void {
     for (const item of this.product) {
-      if(!this.categoryList.includes(item.detail.category)) {
+      if (!this.categoryList.includes(item.detail.category)) {
         this.categoryList.push(item.detail.category);
       }
     }
   }
 
   getStore(): void {
-    if(this.storeService.product === undefined){
+    if (this.storeService.product === undefined) {
       this.storeService.getStore(this.loginService.tokenSecret).subscribe(it => {
         this.storeService.product = it.data;
         this.product = it.data;
@@ -60,9 +65,9 @@ export class CardTableComponent implements OnInit{
     }
   }
 
-  setProduct() : void {
+  setProduct(): void {
     for (const item of this.product) {
-      if(!this.storeList.includes(item.store)) {
+      if (!this.storeList.includes(item.store)) {
         this.storeList.push(item.store);
       }
     }
@@ -70,11 +75,11 @@ export class CardTableComponent implements OnInit{
     this.getCategories()
   }
 
-  goItemPagination(count, data){
+  goItemPagination(count, data) {
     this.visibleDetail = false;
     data = !this.searchIsVisible ? this.product : this.productSearch;
     const paginate = this.utilitiesService.paginate(data.length, count, 5, 5);
-    if(count < 1 || count > paginate.totalPages ){
+    if (count < 1 || count > paginate.totalPages) {
       return;
     }
     this.selectionIndex = count;
@@ -84,11 +89,11 @@ export class CardTableComponent implements OnInit{
     }
   }
 
-  onChangeEvent(event: any){
+  onChangeEvent(event: any) {
     const text = event.target.value.toString().toLowerCase();
     this.store = '';
     this.category = '';
-    if(text.length < 0 ){
+    if (text.length < 0) {
       this.searchIsVisible = false;
       this.productSearch = [];
       this.goItemPagination(this.selectionIndex, this.product);
@@ -96,7 +101,7 @@ export class CardTableComponent implements OnInit{
     }
     this.searchIsVisible = true;
     const result = this.product.filter(it =>
-      it.importer.toString().toLowerCase().includes(text)||
+      it.importer.toString().toLowerCase().includes(text) ||
       it.store.toString().toLowerCase().includes(text) ||
       it.product.toString().toLowerCase().includes(text));
     this.productSearch = result;
@@ -110,17 +115,17 @@ export class CardTableComponent implements OnInit{
     this.detailProduct = !this.searchIsVisible ? this.product[index].detail : this.productSearch[index].detail;
   }
 
-  search()  {
-    if(this.store === ''  && this.category === '' && this.startDay === '' && this.endDay === '')  {
+  search() {
+    if (this.store === '' && this.category === '' && this.startDay === '' && this.endDay === '') {
       return;
     }
     const result = this.product.filter(it =>
-      it.store.toString().toLowerCase() ===  this.store.toLowerCase() ||
+      it.store.toString().toLowerCase() === this.store.toLowerCase() ||
       it.detail.category.toString().toLowerCase() === this.category.toLowerCase().trim()
       || (this.startDay.length > 0 && this.endDay.length === 0 &&
-        this.utilitiesService.conversionDate(new Date(this.startDay),it.detail.expiration))
-      ||(this.endDay.length>0 && this.startDay.length === 0 &&
-        this.utilitiesService.conversionDate(new Date(this.endDay),it.detail.expiration))
+        this.utilitiesService.conversionDate(new Date(this.startDay), it.detail.expiration))
+      || (this.endDay.length > 0 && this.startDay.length === 0 &&
+        this.utilitiesService.conversionDate(new Date(this.endDay), it.detail.expiration))
     );
     this.searchIsVisible = true;
     this.productSearch = result;
@@ -129,7 +134,7 @@ export class CardTableComponent implements OnInit{
     this.goItemPagination(this.selectionIndex, result);
   }
 
-  clean()  {
+  clean() {
     this.store = '';
     this.category = '';
     this.startDay = '';
@@ -139,11 +144,11 @@ export class CardTableComponent implements OnInit{
     this.goItemPagination(this.selectionIndex, this.product);
   }
 
-  convertDate(value){
+  convertDate(value) {
     return new Date(this.utilitiesService.changeFormatDate(value));
   }
 
-  checkExpiration(value){
+  checkExpiration(value) {
     return !this.utilitiesService.validatorDate(this.convertDate(value), 3)
   }
 }

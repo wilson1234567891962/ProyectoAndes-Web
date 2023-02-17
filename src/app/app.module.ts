@@ -51,6 +51,7 @@ import {FormsModule} from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import {CommunicatorService} from './services/communicator.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import {HttpClientModule} from '@angular/common/http';
     ProfileComponent,
     LoadingComponent,
   ],
-    imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+    imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,  ToastrModule.forRoot()],
   providers: [CommunicatorService],
   bootstrap: [AppComponent],
 })
