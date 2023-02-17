@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {Router} from '@angular/router';
 import {UtilitiesService} from '../../../services/utilities.service';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -9,7 +10,7 @@ import {UtilitiesService} from '../../../services/utilities.service';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router, private utilitiesService:UtilitiesService) {}
+  constructor(private loginService: LoginService, private router: Router, private utilitiesService:UtilitiesService, private toastr: ToastrService) {}
   private _email = '';
   private _password = '';
   private _isChecked = false;
@@ -51,7 +52,9 @@ export class LoginComponent implements OnInit {
       this.loginService.rol = result.data.rol;
       this.router.navigate(['admin/dashboard']);
     }, error => {
-
+      this.toastr.error(error.code +': ' +  error.message, 'Error', {
+        timeOut: 3000,
+      });
     })
   }
 

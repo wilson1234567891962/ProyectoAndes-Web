@@ -52,6 +52,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import {CommunicatorService} from './services/communicator.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,7 @@ import {ToastrModule} from 'ngx-toastr';
     ProfileComponent,
     LoadingComponent,
   ],
-    imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,  ToastrModule.forRoot()],
+    imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,  ToastrModule.forRoot(), BrowserAnimationsModule],
   providers: [CommunicatorService],
   bootstrap: [AppComponent],
 })
